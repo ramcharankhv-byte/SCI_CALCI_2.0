@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="min-h-screen w-full bg-gray-900 text-white">
+    <div class="screen flex flex-col justify-center items-center">
+      <div
+        class="display bg-gray-900 h-[30vh] w-full text-right p-5 text-4xl flex flex-col justify-end md:h-[25vh] lg:h-[40vh] lg:text-6xl"
+      >
+        <div
+          id="calculation"
+          class="calculation text-gray-300 text-4xl md:text-5xl lg:text-6xl font-bold"
+        ></div>
+        <div id="result" class="result text-lg md:text-xl text-gray-300">0</div>
+      </div>
+      <div
+        id="buttons_nrml"
+        class="buttons_nrml bg-gray-900 h-[70vh] grid grid-cols-4 gap-x-2 gap-y-0 p-1 place-items-center place-content-start md:w-[700px] md:h-[75vh] lg:w-[1000px] lg:h-[60vh]"
+      >
+        <button
+          onclick="scientificMode()"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center text-yellow-600 hover:bg-gray-500"
+        >
+          S
+        </button>
+        <button
+          onclick="clearDisplay()"
+          id="AC"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          AC
+        </button>
+        <button
+          onclick="calcPercentage()"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          %
+        </button>
+        <button
+          onclick="appendToCalculate('/')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          <i class="fa-solid fa-divide"></i>
+        </button>
+        <button
+          onclick="appendToCalculate('7')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          7
+        </button>
+        <button
+          onclick="appendToCalculate('8')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          8
+        </button>
+        <button
+          onclick="appendToCalculate('9')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          9
+        </button>
+        <button
+          onclick="appendToCalculate('*')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button
+          onclick="appendToCalculate('4')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          4
+        </button>
+        <button
+          onclick="appendToCalculate('5')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          5
+        </button>
+        <button
+          onclick="appendToCalculate('6')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          6
+        </button>
+        <button
+          onclick="appendToCalculate('-')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          -
+        </button>
+        <button
+          onclick="appendToCalculate('1')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          1
+        </button>
+        <button
+          onclick="appendToCalculate('2')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          2
+        </button>
+        <button
+          onclick="appendToCalculate('3')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          3
+        </button>
+        <button
+          onclick="appendToCalculate('+')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          +
+        </button>
+
+        <button
+          onclick="appendToCalculate('0')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          0
+        </button>
+        <button
+          onclick="appendToCalculate('.')"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          .
+        </button>
+        <button
+          onclick="backSpace()"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          <i class="fa-solid fa-delete-left"></i>
+        </button>
+        <button
+          onclick="calculateResult()"
+          class="bg-gray-600 m-0 leading-none rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          =
+        </button>
+      </div>
+      <div
+        id="buttons_sci"
+        class="hidden buttons_sci bg-gray-900 h-[70vh] grid grid-cols-4 gap-x-2 gap-y-0 p-1 place-items-center place-content-start md:w-[700px] md:h-[75vh] lg:w-[1000px] lg:h-[60vh]"
+      >
+        <button
+          onclick="normalMode()"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center text-yellow-600 hover:bg-gray-500"
+        >
+          N
+        </button>
+        <button
+          onclick="scientific('sin')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          sin
+        </button>
+        <button
+          onclick="scientific('cos')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          cos
+        </button>
+        <button
+          onclick="scientific('tan')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          tan
+        </button>
+        <button
+          onclick="scientific('log')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          log
+        </button>
+        <button
+          onclick="scientific('asin')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          sin<sup>-1</sup>
+        </button>
+        <button
+          onclick="scientific('acos')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          cos<sup>-1</sup>
+        </button>
+        <button
+          onclick="scientific('atan')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          tan<sup>-1</sup>
+        </button>
+        <button
+          onclick="scientific('ln')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          ln
+        </button>
+        <button
+          onclick="scientific('sinh')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          sinh
+        </button>
+        <button
+          onclick="scientific('cosh')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          cosh
+        </button>
+        <button
+          onclick="scientific('tanh')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          tanh
+        </button>
+        <button
+          onclick="scientific('square')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          x²
+        </button>
+        <button
+          onclick="appendToCalculate('^')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          x<sup>y</sup>
+        </button>
+        <button
+          onclick="scientific('sqrt')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          √x
+        </button>
+        <button
+          onclick="scientific('cube')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          ³√x
+        </button>
+        <button
+          onclick="scientific('e')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          e
+        </button>
+        <button
+          onclick="scientific('pi')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          π
+        </button>
+        <button onclick="appendToCalculate('(')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          (
+        </button>
+        <button   onclick="appendToCalculate(')')"
+          class="bg-gray-600 rounded-full h-20 w-20 p-2 text-2xl text-center hover:bg-gray-500"
+        >
+          )
+        </button>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

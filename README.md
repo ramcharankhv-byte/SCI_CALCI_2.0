@@ -16,6 +16,8 @@ Clear / All Clear
 
 Backspace (delete last input)
 
+Keyboard-input
+
 📐 Scientific Functions
 
 Trigonometric:
@@ -117,3 +119,4 @@ RC
 B.Tech CSE
 Focused on MERN, Data Science, ML & AI
 #
+

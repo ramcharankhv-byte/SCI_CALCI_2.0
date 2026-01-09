@@ -125,6 +125,9 @@ function backSpace() {
   if (calcDisplay && calcDisplay.textContent.length > 0) {
     calcDisplay.textContent = calcDisplay.textContent.slice(0, -1);
   }
+   showPartialResult();
+    decreaseFontSize();
+    updateACButton();
 }
 function clearDisplay() {
   calcDisplay.textContent = "";
@@ -241,4 +244,63 @@ function scientific(func) {
       break;
   }
   updateACButton();
+}
+document.addEventListener("keydown", handleKeyboardInput);
+
+function handleKeyboardInput(e) {
+  const key = e.key;
+
+  // Allowed input characters
+  const allowedChars = "0123456789.+-*/%";
+
+  // Numbers & operators
+  if (allowedChars.includes(key)) {
+    // prevent double operators
+    const lastChar = calcDisplay.textContent.slice(-1);
+    const operators = "+-*/%";
+
+    if (
+      operators.includes(key) &&
+      operators.includes(lastChar)
+    ) {
+      return;
+    }
+
+    // prevent multiple dots in same number
+    if (key === ".") {
+      const parts = calcDisplay.textContent.split(/[\+\-\*\/%]/);
+      if (parts[parts.length - 1].includes(".")) 
+        return;
+    }
+
+    appendToCalculate(key);
+    e.preventDefault();
+    return;
+  }
+
+  // ENTER = calculate
+  if (key === "Enter") {
+    e.preventDefault();
+    calculateResult();
+    return;
+  }
+
+  // BACKSPACE = delete
+  if (key === "Backspace") {
+    e.preventDefault();
+    backSpace();
+    showPartialResult();
+    decreaseFontSize();
+    updateACButton();
+    return;
+  }
+
+  // ESC = clear
+  if (key === "Escape") {
+    clearDisplay();
+    return;
+  }
+
+  // Block everything else
+  e.preventDefault();
 }

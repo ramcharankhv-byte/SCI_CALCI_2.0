@@ -4,6 +4,18 @@ let ACButton = document.getElementById("AC");
 let nrmlBtns = document.getElementById("buttons_nrml");
 let sciBtns = document.getElementById("buttons_sci");
 
+function decreaseFontSize() {
+  let length = calcDisplay.textContent.length;
+  if (length > 15) {
+    calcDisplay.classList.add("text-2xl");
+    calcDisplay.classList.remove("text-4xl");
+  }
+ else {
+    calcDisplay.classList.add("text-4xl");
+    calcDisplay.classList.remove("text-2xl");
+  }
+}
+
 function appendToCalculate(value) {
   calcDisplay.textContent += value;
   updateACButton();

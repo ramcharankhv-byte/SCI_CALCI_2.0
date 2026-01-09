@@ -3,7 +3,6 @@ let resultDisplay = document.getElementById("result");
 let ACButton = document.getElementById("AC");
 let nrmlBtns = document.getElementById("buttons_nrml");
 let sciBtns = document.getElementById("buttons_sci");
-
 function decreaseFontSize() {
   let length = calcDisplay.textContent.length;
   if (length > 15) {
@@ -15,11 +14,11 @@ function decreaseFontSize() {
     calcDisplay.classList.remove("text-2xl");
   }
 }
-
 function appendToCalculate(value) {
   calcDisplay.textContent += value;
   updateACButton();
   showPartialResult();
+  decreaseFontSize();
 }
 function replaceTrig(expr) {
   expr = expr.replace(/log\(([^)]+)\)/g, (_, v) => Math.log10(Number(v)));
@@ -144,6 +143,7 @@ function calcPercentage() {
 }
 
 function calculateResult() {
+
   try {
     let result = resultDisplay.textContent;
     if (result !== "") {
@@ -157,6 +157,7 @@ function calculateResult() {
     calcDisplay.textContent = "ERROR";
   }
   updateACButton();
+
 }
 scientificMode = () => {
   nrmlBtns.classList.add("hidden");
